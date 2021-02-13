@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MULTIPLICATION TABLE</title>
+    <link rel="stylesheet" href="{% static 'css/tables.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="formview">
+            <div class="banner">
+                MULTIPLICATION TABLE
+            </div>
+            <div class="content">
+                <form action="/tables/" method="POST">
+                    {% csrf_token %}
+                    <div class="forminput">
+                        <label for="value_n">N=</label>
+                        <input type="text" name="value_n" id="value_n" value="{{n}}">
+                    </div>
+                                       
+                    <div class="forminput">
+                        <button type="submit" name="button_multi" id="button_multi">SHOW MULTIPLICATION TABLE</button>
+                    </div>
+                    <div  class="forminput">
+                        {% for k,v in result%}
+                                {{k}}*{{n}}={{v}}<br>
+                        {% endfor %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
